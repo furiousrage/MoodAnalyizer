@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.JUNIT.junitTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-04-04T07:35:03" hostname="DESKTOP-1TPDQPH" time="0.004">
-  <properties/>
-  <testcase name="givenHappyMessage_UsingReflection_ShouldReturnHappy" classname="com.bridgelabz.JUNIT.junitTest" time="0.004"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

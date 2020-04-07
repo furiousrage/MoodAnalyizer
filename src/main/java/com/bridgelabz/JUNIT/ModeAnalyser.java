@@ -3,11 +3,24 @@ package com.bridgelabz.JUNIT;
 import java.util.Objects;
 
 public class ModeAnalyser {
+
     private  String message;
 
-    public ModeAnalyser(String message) {
-        this.message=message;
+    public enum MoodType{
+        happy,sad;
     }
+    private MoodType moodType;
+public ModeAnalyser(){
+
+}
+    public ModeAnalyser(String mood) {
+        this.message=mood;
+    }
+public ModeAnalyser(String mood,MoodType moodType){
+        this.message=mood;
+        this.moodType=moodType;
+}
+
 
     public String analyseMood(String message) throws CheckingMoodException {
         this.message=message;
@@ -16,7 +29,7 @@ public class ModeAnalyser {
     public String analyseMood() throws CheckingMoodException {
         try {
             if (message.length()==0)
-                throw new CheckingMoodException(CheckingMoodException.ExceptionType.ENTERED_EMPTY,"Enter proper mood");
+                throw  new CheckingMoodException(CheckingMoodException.ExceptionType.ENTERED_EMPTY,"Enter proper mood");
             if (message.contains("happy"))
                 return "happy";
             else
