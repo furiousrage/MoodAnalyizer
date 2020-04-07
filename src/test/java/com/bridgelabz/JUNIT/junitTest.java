@@ -8,7 +8,7 @@ import java.lang.reflect.InvocationTargetException;
 
 public class junitTest {
     @Test
-    public void ModeTest() throws CustomizedMoodException {
+    public void MoodTest() throws CustomizedMoodException {
         MoodAnalyser moodAnalyser = new MoodAnalyser("I am happy");
         String mood = MoodAnalyser.analyseMood();
         Assert.assertEquals("happy", mood);
