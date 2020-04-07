@@ -8,14 +8,14 @@ import java.lang.reflect.InvocationTargetException;
 
 public class junitTest {
     @Test
-    public void ModeTest() throws CheckingMoodException {
+    public void ModeTest() throws CustomizedMoodException {
         ModeAnalyser modeAnalyser = new ModeAnalyser("I am happy");
         String mood = modeAnalyser.analyseMood();
         Assert.assertEquals("happy", mood);
     }
 
     @Test
-    public void SadModeTest() throws CheckingMoodException {
+    public void SadModeTest() throws CustomizedMoodException {
         ModeAnalyser modeAnalyser = new ModeAnalyser("I am sad");
         String mood = modeAnalyser.analyseMood();
         Assert.assertEquals("sad", mood);
@@ -27,9 +27,9 @@ public class junitTest {
         String mood = null;
         try {
             //ExpectedException expectedException=ExpectedException.none();
-            // expectedException.expect(CheckingMoodException.class);
+            // expectedException.expect(CustomizedMoodException.class);
             mood = modeAnalyser.analyseMood();
-        } catch (CheckingMoodException e) {
+        } catch (CustomizedMoodException e) {
             Assert.assertEquals("Enter proper mood", e.getMessage());
         }
     }
@@ -40,9 +40,9 @@ public class junitTest {
         String mood = "";
         try {
             //ExpectedException expectedException=ExpectedException.none();
-            // expectedException.expect(CheckingMoodException.class);
+            // expectedException.expect(CustomizedMoodException.class);
             mood = modeAnalyser.analyseMood();
-        } catch (CheckingMoodException e) {
+        } catch (CustomizedMoodException e) {
             Assert.assertEquals("Enter proper mood", e.getMessage());
         }
 
@@ -61,21 +61,21 @@ public class junitTest {
             Assert.assertEquals(new ModeAnalyser(" I am in sad mood "), mood );
 
 
-        } catch (CheckingMoodException e) {
+        } catch (CustomizedMoodException e) {
             e.printStackTrace();
         }
 
     }
 
     @Test
-    public void moodAnalyzerObject_whenProper_ShouldReturnObject() throws CheckingMoodException {
+    public void moodAnalyzerObject_whenProper_ShouldReturnObject() throws CustomizedMoodException {
         Constructor<?> constructor = MoodAnalyserReflector.getConstructor(String.class);
         ModeAnalyser modeAnalyserObject = (ModeAnalyser) MoodAnalyserReflector.createModeAnalysier(constructor,"I am in happy mood");
         Assert.assertEquals(new ModeAnalyser("I am in happy mood"), modeAnalyserObject);
 
     }
     @Test
-    public void givenSadMessage_UsingReflection_ShouldReturnSad() throws CheckingMoodException {
+    public void givenSadMessage_UsingReflection_ShouldReturnSad() throws CustomizedMoodException {
         Constructor<?> constructor = MoodAnalyserReflector.getConstructor(String.class);
         ModeAnalyser modeAnalyserObject = (ModeAnalyser) MoodAnalyserReflector.createModeAnalysier(constructor,"I am in sad mood");
         Object analyseMood = MoodAnalyserReflector.invokeMethod(modeAnalyserObject, "analyseMood");
@@ -94,7 +94,7 @@ public class junitTest {
     }*/
 
     @Test
-    public void givenMoodAnalyser_OnChangeMood_ShouldReturnHappy() throws CheckingMoodException {
+    public void givenMoodAnalyser_OnChangeMood_ShouldReturnHappy() throws CustomizedMoodException {
         Constructor<?> constructor = MoodAnalyserReflector.getConstructor(String.class);
         ModeAnalyser modeAnalyserObject = (ModeAnalyser) MoodAnalyserReflector.createModeAnalysier(constructor," ");
         MoodAnalyserReflector.setFieldValue(modeAnalyserObject,"message","I Am in happy Mood");
@@ -103,7 +103,7 @@ public class junitTest {
     }
 
     @Test
-    public void givenHappyMessage_WithDefaultConstructor_ShouldReturnHappy() throws CheckingMoodException {
+    public void givenHappyMessage_WithDefaultConstructor_ShouldReturnHappy() throws CustomizedMoodException {
         Constructor<?> constructor = MoodAnalyserReflector.getConstructor();
         ModeAnalyser modeAnalyserObject = (ModeAnalyser) MoodAnalyserReflector.createModeAnalysier(constructor);
         MoodAnalyserReflector.setFieldValue(modeAnalyserObject,"message","I Am in happy Mood");
@@ -112,7 +112,7 @@ public class junitTest {
     }
     //test constant enum in mode analyzer
     @Test
-    public void givenMoodAnalyser_WithType_ShouldReturnHappy() throws CheckingMoodException {
+    public void givenMoodAnalyser_WithType_ShouldReturnHappy() throws CustomizedMoodException {
         Constructor<?> constructor = MoodAnalyserReflector.getConstructor(String.class,ModeAnalyser.MoodType.class);
         ModeAnalyser mood = (ModeAnalyser) MoodAnalyserReflector.createModeAnalysier(constructor," I am in happy mood ",ModeAnalyser.MoodType.happy);
         Assert.assertEquals(new ModeAnalyser(" I am in happy mood "), mood );
