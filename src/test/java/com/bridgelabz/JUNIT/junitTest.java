@@ -6,16 +6,16 @@ import org.junit.Test;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
-public class junitTest {
+public class JunitTest {
     @Test
-    public void MoodTest() throws CustomizedMoodException {
+    public void moodTest() throws CustomizedMoodException {
         MoodAnalyser moodAnalyser = new MoodAnalyser("I am happy");
         String mood = MoodAnalyser.analyseMood();
         Assert.assertEquals("happy", mood);
     }
 
     @Test
-    public void SadMoodTest() throws CustomizedMoodException {
+    public void sadMoodTest() throws CustomizedMoodException {
         MoodAnalyser moodAnalyser = new MoodAnalyser("I am sad");
         String mood = modeAnalyser.analyseMood();
         Assert.assertEquals("sad", mood);
