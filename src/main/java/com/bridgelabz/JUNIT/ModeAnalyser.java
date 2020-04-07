@@ -2,7 +2,7 @@ package com.bridgelabz.JUNIT;
 
 import java.util.Objects;
 
-public class ModeAnalyser {
+public class MoodAnalyser {
 
     private  String message;
 
@@ -10,13 +10,13 @@ public class ModeAnalyser {
         happy,sad;
     }
     private MoodType moodType;
-public ModeAnalyser(){
+public MoodAnalyser(){
 
 }
-    public ModeAnalyser(String mood) {
+    public MoodAnalyser(String mood) {
         this.message=mood;
     }
-public ModeAnalyser(String mood,MoodType moodType){
+public MoodAnalyser(String mood,MoodType moodType){
         this.message=mood;
         this.moodType=moodType;
 }
@@ -43,7 +43,7 @@ public ModeAnalyser(String mood,MoodType moodType){
 
     @Override
     public boolean equals(Object anotherObject) {
-       if(this.message.equals(((ModeAnalyser)anotherObject).message))
+       if(this.message.equals(((MoodAnalyser)anotherObject).message))
            return true;
        return false;
     }
