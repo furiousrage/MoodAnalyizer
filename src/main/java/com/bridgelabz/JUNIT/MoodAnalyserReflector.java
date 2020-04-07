@@ -17,7 +17,7 @@ public class MoodAnalyserReflector {
             throw new CustomizedMoodException(CustomizedMoodException.ExceptionType.NO_SUCH_METHOD, "Enter Proper method name");
         }
     }
-    public static Object createModeAnalysier(Constructor<?> constructor, Object ... message) throws CustomizedMoodException {
+    public static Object createMoodAnalysier(Constructor<?> constructor, Object ... message) throws CustomizedMoodException {
         try {
             Object moodObject = constructor.newInstance(message);
             return moodObject;
@@ -31,7 +31,7 @@ public class MoodAnalyserReflector {
         }
     }
 
-    public static Object invokeMethod (ModeAnalyser moodObject, String analyseMood) throws CustomizedMoodException {
+    public static Object invokeMethod (MoodAnalyser moodObject, String analyseMood) throws CustomizedMoodException {
             try {
                 return moodObject.getClass().getMethod(analyseMood).invoke(moodObject);
             } catch (IllegalAccessException | InvocationTargetException e) {
@@ -41,7 +41,7 @@ public class MoodAnalyserReflector {
             }
 
         }
-        public static void setFieldValue (ModeAnalyser moodObject, String fieldName, String fieldValue) throws
+        public static void setFieldValue (MoodAnalyser moodObject, String fieldName, String fieldValue) throws
         CustomizedMoodException {
             try {
                 Field field = moodObject.getClass().getDeclaredField(fieldName);
