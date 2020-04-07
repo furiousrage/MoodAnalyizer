@@ -22,21 +22,21 @@ public ModeAnalyser(String mood,MoodType moodType){
 }
 
 
-    public String analyseMood(String message) throws CheckingMoodException {
+    public String analyseMood(String message) throws CustomizedMoodException {
         this.message=message;
         return analyseMood();
     }
-    public String analyseMood() throws CheckingMoodException {
+    public String analyseMood() throws CustomizedMoodException {
         try {
             if (message.length()==0)
-                throw  new CheckingMoodException(CheckingMoodException.ExceptionType.ENTERED_EMPTY,"Enter proper mood");
+                throw  new CustomizedMoodException(CustomizedMoodException.ExceptionType.ENTERED_EMPTY,"Enter proper mood");
             if (message.contains("happy"))
                 return "happy";
             else
                 return "sad";
         }
         catch(NullPointerException e){
-            throw new CheckingMoodException(CheckingMoodException.ExceptionType.ENTERED_NULL,"Enter proper mood");
+            throw new CustomizedMoodException(CustomizedMoodException.ExceptionType.ENTERED_NULL,"Enter proper mood");
         }
 
     }
